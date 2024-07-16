@@ -1,6 +1,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
-<nav class="bg-blue-500">
-<header class="bg-blue-500">
+
+<header class="bg-green-500">
+
 	<nav class="relative px-4 py-4 flex justify-between items-center bg-white">
 		<a class="text-3xl font-bold leading-none" href="#">
 			<svg class="h-10" alt="logo" viewBox="0 0 10240 10240">
@@ -85,7 +86,6 @@
 		</nav>
 	</div>
 </header>
-</nav>
 <script>
 // Burger menus
 document.addEventListener('DOMContentLoaded', function() {
