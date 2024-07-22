@@ -5,9 +5,9 @@ session_start();
 $db = new db();
 $db->connecte();
 if (isset($_POST['connexion'])) {
-    if(isset($_POST['pseudoCo'])){
+    if (isset($_POST['pseudoCo'])) {
         $pseudo = trim(($_POST['pseudoCo']));
-    }elseif(isset($_POST['emailCo'])){
+    } elseif (isset($_POST['emailCo'])) {
         $pseudo = trim(($_POST['emailCo']));
     }
     $pseudo = trim(($_POST['pseudoCo']));
@@ -17,10 +17,7 @@ if (isset($_POST['connexion'])) {
         $user = $db->userConnect(["user" => $pseudo, "password" => $password]);
         if ($user) {
             $_SESSION['user'] = $user;
-           
         }
-
-
     }
 }
 
@@ -38,20 +35,15 @@ if (isset($_POST['connexion'])) {
 
 <body>
     <?php include ("header.php"); ?>
-    <!-- component -->
+
 
     <body class="bg-white">
-        <!-- url('/img/hero-pattern.svg') -->
+
         <div class="flex min-h-screen bg-white">
 
             <div class="w-1/2 bg-cover md:block hidden"
                 style="background-image:  url(https://images.unsplash.com/photo-1468434453985-b1ca3b555f00?ixlib=rb-4.0.3)">
             </div>
-            <!-- <div class="bg-no-repeat bg-right bg-cover max-w-max max-h-8 h-12 overflow-hidden">
-            <img src="log_in.webp" alt="hey">
-        </div> -->
-
-
             <div class="md:w-1/2 max-w-lg mx-auto my-24 px-4 py-5 shadow-none">
 
                 <div class="text-left p-0 font-sans">
