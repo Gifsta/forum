@@ -42,26 +42,27 @@ class db
             }
         }
     }
-    public function getPost()
+    public function getPost($id)
     {
-        $sql = "SELECT * FROM post";
-        $result = $this->db->query($sql);
-        return $result->fetchAll(PDO::FETCH_ASSOC);
+        $sql = $this->db->prepare("SELECT * FROM post WHERE id_categorie = :id");
+        $sql->bindParam(":id", $id);
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
-
-    public function addPost(Posts $post): void
+    
+        public function addPost(Posts $post): void
     {
         $title = $post->getTitle();
         $content = $post->getContent();
-        $id_categorie = $post->getId_categorie();
-        $id_user = $post->getId_user();
-        $sql = $this->db->prepare("INSERT INTO post (title,content,id_categorie,id_user) VALUES (:title, :content, :id_categorie, :id_user)");
-        $sql->bindParam(":title", $title);
-        $sql->bindParam(":content", $content);
-        $sql->bindParam(":id_categorie",$id_categorie);
-        $sql->bindParam(":id_user",$id_user);
+        $categorie = $post->getId_categorie();
+        $sql = $this->db->prepare("INSERT INTO post (title,content,id_categorie) VALUES (:title, :content, :categorie)");
+        $sql->bindParam(":title",$title);
+        $sql->bindParam(":content",$content);
+        $sql->bindParam(":categorie",$categorie);
         $sql->execute();
     }
+
+    
 
     public function deletePost($id):void
     {
@@ -89,7 +90,11 @@ class db
         $sql->bindParam(":name", $name);
         $sql->execute();
     }
-    public function getS_Categorie()
+    public function getS_Categorie($id)
     {
+        $sql = $this->db->prepare("SELECT * FROM sous_categorie WHERE id_categorie = :id");
+        $sql->bindParam(":id", $id);
+        $sql->execute();
+        return $sql->fetchAll(PDO::FETCH_ASSOC);
     }
 }

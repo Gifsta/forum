@@ -1,5 +1,3 @@
-<script src="https://cdn.tailwindcss.com"></script>
-
 <header class="bg-green-500">
 
 	<nav class="relative px-4 py-4 flex justify-between items-center bg-white">
@@ -55,16 +53,7 @@
 						d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
 				</svg>
 			</li>
-			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="create_post.php">Post</a></li>
-			<li class="text-gray-300">
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill"
-					viewBox="0 0 24 24">
-					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-						d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-				</svg>
-			</li>
-			<?php if (isset($_SESSION['user'])) ?>
-			<?php if (isset($_SESSION['user']['statut']) == "admin") { ?>
+			<?php if (isset($_SESSION['user']) && $_SESSION['user']['statut'] == "admin") { ?>
 				<li><a class="text-sm text-gray-400 hover:text-gray-500" href="admin.php">Admin</a></li>
 				<li class="text-gray-300">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" class="w-4 h-4 current-fill"
@@ -72,7 +61,9 @@
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
 							d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
 					</svg>
+
 				<?php } ?>
+
 			</li>
 			<li><a class="text-sm text-gray-400 hover:text-gray-500" href="login.php">Connexion</a></li>
 
@@ -120,16 +111,13 @@
 					<li class="mb-1">
 						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
 							href="login.php">Connexion</a>
-						<?php if (isset($_SESSION['user'])) ?>
-						<?php if (isset($_SESSION['user']['statut']) == "admin") { ?>
-						<li class="mb-1">
-							<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
-								href="login.php">Admin</a>
-						</li><?php } ?>
-					<li class="mb-1">
-						<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
-							href="create_post.php">Post</a>
-					</li>
+						<?php if (isset($_SESSION['user'])) { ?>
+							<?php if (isset($_SESSION['user']['statut']) == "admin") { ?>
+							<li class="mb-1">
+								<a class="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded"
+									href="admin.php">Admin</a>
+							</li><?php }
+						} ?>
 				</ul>
 			</div>
 			<div class="mt-auto">

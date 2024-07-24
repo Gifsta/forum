@@ -2,14 +2,11 @@
 class Posts
 {
     private $id;
-
     private $title;
-
     private $content;
-
     private $like;
-    
     private $id_categorie;
+    private $id_user;
 
 
     public function getId()
@@ -59,6 +56,16 @@ class Posts
     public function setId_categorie($id_categorie)
     {
         $this->id_categorie = $id_categorie;
+
+        return $this;
+    }
+    public function getId_user()
+    {
+        return $this->id_user;
+    }
+    public function setId_user($id_user)
+    {
+        $this->id_user = $id_user;
 
         return $this;
     }

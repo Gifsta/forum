@@ -12,7 +12,7 @@ CREATE TABLE `image`(
 );
 CREATE TABLE `sous_categorie`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `id_categorie` BIGINT NOT NULL,
+    `id_categorie` BIGINT UNSIGNED NOT NULL,
     `name` VARCHAR(100) NOT NULL
 );
 CREATE TABLE `categorie`(
@@ -21,16 +21,16 @@ CREATE TABLE `categorie`(
 );
 CREATE TABLE `report`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `report_post` BIGINT NULL,
-    `report_comment` BIGINT NULL,
-    `id_user` BIGINT NOT NULL
+    `report_post` BIGINT UNSIGNED NULL,
+    `report_comment` BIGINT UNSIGNED NULL,
+    `id_user` BIGINT UNSIGNED NOT NULL
 );
 CREATE TABLE `comment`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
     `title` VARCHAR(100) NOT NULL,
     `content` TEXT NOT NULL,
     `likes` BIGINT NOT NULL,
-    `id_post` BIGINT NOT NULL
+    `id_post` BIGINT UNSIGNED NOT NULL
 );
 CREATE TABLE `user`(
     `id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -38,7 +38,7 @@ CREATE TABLE `user`(
     `password` VARCHAR(255) NOT NULL,
     `pseudo` VARCHAR(100) NOT NULL,
     `statut` VARCHAR(50) NOT NULL,
-    `pdp` INT NOT NULL,
+    `pdp` BIGINT UNSIGNED NOT NULL,
     `bio` TEXT NULL
 );
 ALTER TABLE
